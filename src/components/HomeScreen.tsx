@@ -1,9 +1,17 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
+import { FaBeer } from "react-icons/fa";
 
 const HomeScreen = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClickCalender = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="w-9/10 p-3 border border-indigo-400 rounded-xl mx-auto">
       <div className="flex  flex-col justify-between ">
@@ -15,12 +23,18 @@ const HomeScreen = () => {
             <option value="Yoga">Yoga</option>
             <option value="Abs">Abs</option>
           </select>
-          <DatePicker
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-            showTimeSelect
-            dateFormat="dd/MM/yyyy h:mm aa"
-          />
+          <button onClick={handleClickCalender}>
+            <FaBeer />
+          </button>
+          {isOpen && (
+            <DatePicker
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              dateFormat="dd/MM/yyyy h:mm aa"
+              showTimeInput
+              inline
+            />
+          )}
         </div>
 
         <div className="flex gap-2 mb-3">
