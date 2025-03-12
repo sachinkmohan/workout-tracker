@@ -1,4 +1,9 @@
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useState } from "react";
+
 const HomeScreen = () => {
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   return (
     <div className="w-9/10 p-3 border border-indigo-400 rounded-xl mx-auto">
       <div className="flex  flex-col justify-between ">
@@ -10,6 +15,12 @@ const HomeScreen = () => {
             <option value="Yoga">Yoga</option>
             <option value="Abs">Abs</option>
           </select>
+          <DatePicker
+            selected={selectedDate}
+            onChange={(date) => setSelectedDate(date)}
+            showTimeSelect
+            dateFormat="dd/MM/yyyy h:mm aa"
+          />
         </div>
 
         <div className="flex gap-2 mb-3">
