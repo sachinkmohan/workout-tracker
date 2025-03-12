@@ -2,9 +2,14 @@ const HomeScreen = () => {
   return (
     <div className="w-9/10 p-3 border border-indigo-400 rounded-xl mx-auto">
       <div className="flex  flex-col justify-between ">
-        <div className="flex gap-3 mb-3">
-          <span>x</span>
-          <p>Strength-Total</p>
+        <div className="mb-3">
+          <select className="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+            <option value="Strength-Total">Strength-Total</option>
+            <option value="Strength-Upper">Strength-Upper</option>
+            <option value="Strength-Lower">Strength-Lower</option>
+            <option value="Yoga">Yoga</option>
+            <option value="Abs">Abs</option>
+          </select>
         </div>
 
         <div className="flex gap-2 mb-3">
