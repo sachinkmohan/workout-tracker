@@ -13,7 +13,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <div className="w-9/10 md:max-w-[600px] p-3 border border-indigo-400 rounded-xl mx-auto">
+    <div className="md:max-w-[600px] p-3 border border-gray-200 rounded-xl mx-auto bg-white">
       <div className="flex flex-col">
         <div className="mb-3 md:flex md:justify-items-start md:gap-4 ">
           <select className="w-full md:w-1/3 border border-gray-300 rounded-md mb-3 px-3 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-400">
