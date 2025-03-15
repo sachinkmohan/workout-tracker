@@ -24,25 +24,31 @@ const HomeScreen = () => {
             <option value="Abs">Abs</option>
           </select>
 
-          <div className="w-full md:w-1/3 mb-3 flex md:justify-items-start gap-2">
-            <button
-              onClick={handleClickCalender}
-              className="w-full md:w-auto flex justify-center border border-gray-300 rounded-md px-3 py-1 "
-            >
-              <FaBeer className="text-lg" />
-            </button>
-            {isOpen && (
-              <DatePicker
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                dateFormat="dd/MM/yyyy h:mm aa"
-                showTimeInput
-                inline
-              />
-            )}
-            <button className="w-full md:w-auto border border-gray-300 rounded-md px-3  py-1 flex justify-center">
-              <FaAccusoft className="text-lg" />
-            </button>
+          <div className=" md:w-1/3 mb-3 flex md:justify-items-start gap-2">
+            <div className="relative flex-1 md:flex-none">
+              <button
+                onClick={handleClickCalender}
+                className="w-full md:w-auto flex justify-center border border-gray-300 rounded-md px-3 py-1 "
+              >
+                <FaBeer className="text-lg" />
+              </button>
+              {isOpen && (
+                <div className="absolute">
+                  <DatePicker
+                    selected={selectedDate}
+                    onChange={(date) => setSelectedDate(date)}
+                    dateFormat="dd/MM/yyyy h:mm aa"
+                    showTimeInput
+                    inline
+                  />
+                </div>
+              )}
+            </div>
+            <div className="flex-1 md:flex-none">
+              <button className="w-full md:w-auto border border-gray-300 rounded-md px-3  py-1 flex justify-center">
+                <FaAccusoft className="text-lg" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
