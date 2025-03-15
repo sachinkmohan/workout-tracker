@@ -115,6 +115,21 @@ const HomeScreen = () => {
           Log
         </button>
       </div>
+
+      <div className="mt-3">
+        <h2>Workout Logs</h2>
+        <ul>
+          {JSON.parse(localStorage.getItem("workoutLogs") ?? "[]").map(
+            (log: WorkoutLog) => (
+              <li key={log.id}>
+                <div className="font-bold">{log.workoutName}</div>
+                <div>{log.duration}</div>
+                <div>{format(new Date(log.logDate), "dd-MM-yy hh:mm")}</div>
+              </li>
+            )
+          )}
+        </ul>
+      </div>
     </div>
   );
 };
