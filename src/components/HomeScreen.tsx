@@ -70,7 +70,9 @@ const HomeScreen = () => {
                 onClick={handleClickCalender}
                 className="w-full md:w-auto flex justify-center border border-gray-300 rounded-md px-3 py-1 "
               >
-                {format(selectedDate, "dd-MM-yy hh:mm")}
+                {selectedDate
+                  ? format(selectedDate, "dd-MM-yy hh:mm")
+                  : "No Date Selected"}
               </button>
               {isOpen && (
                 <div className="absolute">
