@@ -1,7 +1,8 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
-import { FaBeer, FaAccusoft } from "react-icons/fa";
+import { FaCalendarDays } from "react-icons/fa6";
+import { IoIosFlash } from "react-icons/io";
 
 const HomeScreen = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
@@ -30,7 +31,7 @@ const HomeScreen = () => {
                 onClick={handleClickCalender}
                 className="w-full md:w-auto flex justify-center border border-gray-300 rounded-md px-3 py-1 "
               >
-                <FaBeer className="text-lg" />
+                <FaCalendarDays className="text-lg" />
               </button>
               {isOpen && (
                 <div className="absolute">
@@ -46,7 +47,7 @@ const HomeScreen = () => {
             </div>
             <div className="flex-1 md:flex-none">
               <button className="w-full md:w-auto border border-gray-300 rounded-md px-3  py-1 flex justify-center">
-                <FaAccusoft className="text-lg" />
+                <IoIosFlash className="text-lg" />
               </button>
             </div>
           </div>
