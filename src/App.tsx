@@ -1,13 +1,15 @@
 import "./App.css";
 
-import HomeScreen from "./components/HomeScreen";
+import LogWorkout from "./components/LogWorkout";
+import LoggedWorkouts from "./components/LoggedWorkouts";
 import AppHeader from "./components/AppHeader";
 
 function App() {
   return (
     <div>
       <AppHeader />
-      <HomeScreen />
+      <LogWorkout />
+      <LoggedWorkouts />
     </div>
   );
 }

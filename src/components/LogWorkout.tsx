@@ -49,7 +49,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <div className="md:max-w-[600px] p-3 border border-gray-200 rounded-xl mx-auto bg-white">
+    <div className="md:max-w-[600px] p-3  border border-gray-200 rounded-xl mx-auto bg-white">
       <div className="flex flex-col">
         <div className="mb-3 md:flex md:justify-items-start md:gap-4 ">
           <select
@@ -68,7 +68,7 @@ const HomeScreen = () => {
             <div className="relative flex-1 md:flex-none">
               <button
                 onClick={handleClickCalender}
-                className="w-full md:w-auto flex justify-center border border-gray-300 rounded-md px-3 py-1 "
+                className="w-full md:w-auto h-9 flex justify-center border border-gray-300 rounded-md px-3 py-1 "
               >
                 {selectedDate
                   ? format(selectedDate, "dd-MM-yy hh:mm")
@@ -87,7 +87,7 @@ const HomeScreen = () => {
               )}
             </div>
             <div className="flex-1 md:flex-none">
-              <button className="w-full md:w-auto border border-gray-300 rounded-md px-3  py-1 flex justify-center">
+              <button className="w-full md:w-auto h-9 border border-gray-300 rounded-md px-3 py-1 flex justify-center items-center">
                 <IoIosFlash className="text-lg" />
               </button>
             </div>
