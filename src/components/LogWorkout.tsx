@@ -12,7 +12,7 @@ type WorkoutLog = {
   duration: string;
 };
 
-const HomeScreen = () => {
+const LogWorkout = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [workoutType, setWorkoutType] = useState("Strength-Total");
   const [duration, setDuration] = useState("5m");
@@ -49,7 +49,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <div className="md:max-w-[600px] p-3  border border-gray-200 rounded-xl mx-auto bg-white">
+    <div className="p-3  border border-gray-200 rounded-xl mx-auto bg-white">
       <div className="flex flex-col">
         <div className="mb-3 md:flex md:justify-items-start md:gap-4 ">
           <select
@@ -136,4 +136,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default LogWorkout;

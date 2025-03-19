@@ -1,14 +1,14 @@
 import "./App.css";
 
-import LogWorkout from "./components/LogWorkout";
 import LoggedWorkouts from "./components/LoggedWorkouts";
 import AppHeader from "./components/AppHeader";
+import AppContainer from "./components/AppContainer";
 
 function App() {
   return (
     <div>
       <AppHeader />
-      <LogWorkout />
+      <AppContainer />
       <LoggedWorkouts />
     </div>
   );
