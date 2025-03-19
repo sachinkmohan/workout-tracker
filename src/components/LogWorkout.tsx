@@ -5,8 +5,6 @@ import { IoIosFlash } from "react-icons/io";
 import { format } from "date-fns";
 import { v4 as uuidv4 } from "uuid";
 
-import LoggedWorkouts from "./LoggedWorkouts";
-
 type WorkoutLog = {
   id: string;
   workoutName: string;
@@ -14,7 +12,11 @@ type WorkoutLog = {
   duration: string;
 };
 
-const LogWorkout = () => {
+interface LogWorkoutProps {
+  onLogWorkout: () => void;
+}
+
+const LogWorkout = ({ onLogWorkout }: LogWorkoutProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
   const [workoutLogs, setWorkoutLogs] = useState<WorkoutLog[]>(
     JSON.parse(localStorage.getItem("workoutLogs") ?? "[]")
@@ -48,6 +50,7 @@ const LogWorkout = () => {
     setWorkoutLogs(updatedLogs);
 
     localStorage.setItem("workoutLogs", JSON.stringify(updatedLogs));
+    onLogWorkout();
   };
 
   return (

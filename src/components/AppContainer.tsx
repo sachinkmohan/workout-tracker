@@ -10,13 +10,17 @@ type WorkoutLog = {
 };
 
 const AppContainer = () => {
-  const [workoutLogs] = useState<WorkoutLog[]>(
+  const [workoutLogs, setWorkoutLogs] = useState<WorkoutLog[]>(
     JSON.parse(localStorage.getItem("workoutLogs") ?? "[]")
   );
+
+  const refreshWorkoutLogs = () => {
+    setWorkoutLogs(JSON.parse(localStorage.getItem("workoutLogs") ?? "[]"));
+  };
   return (
     <div>
       <h1>App Container</h1>
-      <LogWorkout />
+      <LogWorkout onLogWorkout={refreshWorkoutLogs} />
       <LoggedWorkouts workoutLogs={workoutLogs} />
     </div>
   );
