@@ -5,6 +5,8 @@ import { IoIosFlash } from "react-icons/io";
 import { format } from "date-fns";
 import { v4 as uuidv4 } from "uuid";
 
+import LoggedWorkouts from "./LoggedWorkouts";
+
 type WorkoutLog = {
   id: string;
   workoutName: string;
@@ -14,6 +16,9 @@ type WorkoutLog = {
 
 const LogWorkout = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+  const [workoutLogs, setWorkoutLogs] = useState<WorkoutLog[]>(
+    JSON.parse(localStorage.getItem("workoutLogs") ?? "[]")
+  );
   const [workoutType, setWorkoutType] = useState("Strength-Total");
   const [duration, setDuration] = useState("5m");
   const [isOpen, setIsOpen] = useState(false);
@@ -32,10 +37,6 @@ const LogWorkout = () => {
   };
 
   const logWorkout = () => {
-    const existingLogs = JSON.parse(
-      localStorage.getItem("workoutLogs") ?? "[]"
-    );
-
     const newLog: WorkoutLog = {
       id: uuidv4(),
       workoutName: workoutType,
@@ -43,7 +44,8 @@ const LogWorkout = () => {
       duration: duration,
     };
 
-    const updatedLogs = [...existingLogs, newLog];
+    const updatedLogs = [...workoutLogs, newLog];
+    setWorkoutLogs(updatedLogs);
 
     localStorage.setItem("workoutLogs", JSON.stringify(updatedLogs));
   };
@@ -116,21 +118,6 @@ const LogWorkout = () => {
         >
           Log
         </button>
-      </div>
-
-      <div className="mt-3">
-        <h2>Workout Logs</h2>
-        <ul>
-          {JSON.parse(localStorage.getItem("workoutLogs") ?? "[]").map(
-            (log: WorkoutLog) => (
-              <li key={log.id}>
-                <div className="font-bold">{log.workoutName}</div>
-                <div>{log.duration}</div>
-                <div>{format(new Date(log.logDate), "dd-MM-yy hh:mm")}</div>
-              </li>
-            )
-          )}
-        </ul>
       </div>
     </div>
   );
