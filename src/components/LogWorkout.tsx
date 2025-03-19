@@ -117,7 +117,7 @@ const LogWorkout = ({ onLogWorkout }: LogWorkoutProps) => {
 
         <button
           onClick={logWorkout}
-          className="w-full bg-blue-300 text-white px-3 py-1 rounded-md"
+          className="w-full bg-blue-500 text-white px-3 py-1 rounded-md"
         >
           Log
         </button>
