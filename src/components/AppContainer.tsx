@@ -1,6 +1,7 @@
 import { useState } from "react";
 import LogWorkout from "./LogWorkout";
 import LoggedWorkouts from "./LoggedWorkouts";
+import { ToastContainer } from "react-toastify";
 
 type WorkoutLog = {
   id: string;
@@ -25,6 +26,7 @@ const AppContainer = () => {
         workoutLogs={workoutLogs}
         onWorkoutsUpdated={refreshWorkoutLogs}
       />
+      <ToastContainer closeOnClick={true} />
     </div>
   );
 };

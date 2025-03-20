@@ -1,5 +1,6 @@
 import { formatDistance, parseISO } from "date-fns";
 import { GrUndo } from "react-icons/gr";
+import { toast } from "react-toastify";
 
 type WorkoutLog = {
   id: string;
@@ -20,6 +21,7 @@ const LoggedWorkouts = ({
     const updatedLogs = workoutLogs.slice(1);
 
     localStorage.setItem("workoutLogs", JSON.stringify(updatedLogs));
+    toast.error("Last Workout Removed");
     onWorkoutsUpdated();
   };
 

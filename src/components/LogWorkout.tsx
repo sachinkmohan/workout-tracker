@@ -1,4 +1,5 @@
 import DatePicker from "react-datepicker";
+import { toast } from "react-toastify";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import { IoIosFlash } from "react-icons/io";
@@ -50,6 +51,7 @@ const LogWorkout = ({ onLogWorkout }: LogWorkoutProps) => {
 
     localStorage.setItem("workoutLogs", JSON.stringify(updatedLogs));
     onLogWorkout();
+    toast.success("Workout Logged Successfully");
   };
 
   return (
@@ -66,6 +68,7 @@ const LogWorkout = ({ onLogWorkout }: LogWorkoutProps) => {
             <option value="Strength-Lower">Strength-Lower</option>
             <option value="Yoga">Yoga</option>
             <option value="Abs">Abs</option>
+            <option value="HIIT">HIIT</option>
           </select>
 
           <div className=" md:w-1/3 mb-3 flex md:justify-items-start gap-2">
