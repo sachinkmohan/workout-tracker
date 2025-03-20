@@ -17,7 +17,7 @@ const LoggedWorkouts = ({
   onWorkoutsUpdated,
 }: LoggedWorkoutsProps) => {
   const removeLastItem = () => {
-    const updatedLogs = workoutLogs.slice(0, -1);
+    const updatedLogs = workoutLogs.slice(1);
 
     localStorage.setItem("workoutLogs", JSON.stringify(updatedLogs));
     onWorkoutsUpdated();
@@ -36,7 +36,7 @@ const LoggedWorkouts = ({
         workoutLogs?.map((log) => (
           <div
             key={log.id}
-            className="p-2 mb-2 flex justify-between border border-gray-200 rounded-lg "
+            className="p-2 mb-2 flex justify-between bg-white border border-gray-200 rounded-lg "
           >
             <div className="flex flex-col items-start">
               <p>{log.workoutName}</p>

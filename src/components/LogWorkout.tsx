@@ -46,7 +46,7 @@ const LogWorkout = ({ onLogWorkout }: LogWorkoutProps) => {
     const currentLogs: WorkoutLog[] = JSON.parse(
       localStorage.getItem("workoutLogs") ?? "[]"
     );
-    const updatedLogs = [...currentLogs, newLog];
+    const updatedLogs = [newLog, ...currentLogs];
 
     localStorage.setItem("workoutLogs", JSON.stringify(updatedLogs));
     onLogWorkout();
