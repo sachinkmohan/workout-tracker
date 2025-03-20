@@ -1,4 +1,5 @@
 import { formatDistance, parseISO } from "date-fns";
+import { GrUndo } from "react-icons/gr";
 
 type WorkoutLog = {
   id: string;
@@ -9,13 +10,26 @@ type WorkoutLog = {
 
 interface LoggedWorkoutsProps {
   workoutLogs: WorkoutLog[];
+  onWorkoutsUpdated: () => void;
 }
-const LoggedWorkouts = ({ workoutLogs }: LoggedWorkoutsProps) => {
+const LoggedWorkouts = ({
+  workoutLogs,
+  onWorkoutsUpdated,
+}: LoggedWorkoutsProps) => {
+  const removeLastItem = () => {
+    const updatedLogs = workoutLogs.slice(0, -1);
+
+    localStorage.setItem("workoutLogs", JSON.stringify(updatedLogs));
+    onWorkoutsUpdated();
+  };
+
   return (
-    <div className="py-4">
-      <h2 className="mb-2 font-bold flex justify-items-start">
-        Logged Workouts
-      </h2>
+    <div className="py-4 ">
+      <div className="flex justify-between items-center mb-2">
+        <h2 className="font-bold ">Recent Workouts</h2>
+        <GrUndo onClick={removeLastItem} />
+      </div>
+
       {workoutLogs?.length === 0 ? (
         <p>Flex that muscle & log a Workout </p>
       ) : (

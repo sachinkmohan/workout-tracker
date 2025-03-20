@@ -18,9 +18,6 @@ interface LogWorkoutProps {
 
 const LogWorkout = ({ onLogWorkout }: LogWorkoutProps) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
-  const [workoutLogs, setWorkoutLogs] = useState<WorkoutLog[]>(
-    JSON.parse(localStorage.getItem("workoutLogs") ?? "[]")
-  );
   const [workoutType, setWorkoutType] = useState("Strength-Total");
   const [duration, setDuration] = useState("5m");
   const [isOpen, setIsOpen] = useState(false);
@@ -46,8 +43,10 @@ const LogWorkout = ({ onLogWorkout }: LogWorkoutProps) => {
       duration: duration,
     };
 
-    const updatedLogs = [...workoutLogs, newLog];
-    setWorkoutLogs(updatedLogs);
+    const currentLogs: WorkoutLog[] = JSON.parse(
+      localStorage.getItem("workoutLogs") ?? "[]"
+    );
+    const updatedLogs = [...currentLogs, newLog];
 
     localStorage.setItem("workoutLogs", JSON.stringify(updatedLogs));
     onLogWorkout();
