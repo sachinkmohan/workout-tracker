@@ -20,7 +20,6 @@ const AppContainer = () => {
   };
   return (
     <div>
-      <h1>App Container</h1>
       <LogWorkout onLogWorkout={refreshWorkoutLogs} />
       <LoggedWorkouts
         workoutLogs={workoutLogs}
