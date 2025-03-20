@@ -2,7 +2,6 @@ import DatePicker from "react-datepicker";
 import { toast } from "react-toastify";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
-import { IoIosFlash } from "react-icons/io";
 import { format } from "date-fns";
 import { v4 as uuidv4 } from "uuid";
 
@@ -92,11 +91,6 @@ const LogWorkout = ({ onLogWorkout }: LogWorkoutProps) => {
                   />
                 </div>
               )}
-            </div>
-            <div className="flex-1 md:flex-none">
-              <button className="w-full md:w-auto h-9 border border-gray-300 rounded-md px-3 py-1 flex justify-center items-center">
-                <IoIosFlash className="text-lg" />
-              </button>
             </div>
           </div>
         </div>
