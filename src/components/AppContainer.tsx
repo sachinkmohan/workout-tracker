@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LogWorkout from "./LogWorkout";
 import LoggedWorkouts from "./LoggedWorkouts";
 import { ToastContainer } from "react-toastify";
@@ -18,6 +18,17 @@ const AppContainer = () => {
   const refreshWorkoutLogs = () => {
     setWorkoutLogs(JSON.parse(localStorage.getItem("workoutLogs") ?? "[]"));
   };
+
+  useEffect(() => {
+    const handleDataImported = () => {
+      refreshWorkoutLogs();
+    };
+    window.addEventListener("workoutDataImported", handleDataImported);
+    return () => {
+      window.removeEventListener("workoutDataImported", handleDataImported);
+    };
+  }, []);
+
   return (
     <div>
       <LogWorkout onLogWorkout={refreshWorkoutLogs} />
