@@ -1,4 +1,5 @@
 import { formatDistance, parseISO } from "date-fns";
+import { useState } from "react";
 import { GrUndo } from "react-icons/gr";
 import { toast } from "react-toastify";
 
@@ -17,6 +18,8 @@ const LoggedWorkouts = ({
   workoutLogs,
   onWorkoutsUpdated,
 }: LoggedWorkoutsProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const removeLastItem = () => {
     const updatedLogs = workoutLogs.slice(1);
 
@@ -25,33 +28,52 @@ const LoggedWorkouts = ({
     onWorkoutsUpdated();
   };
 
+  const toggleExpandItems = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
+  const getDisplayedLogs = () => {
+    if (workoutLogs?.length === 0) {
+      return <p>Flex that muscle & log a Workout </p>;
+    } else if (isExpanded) {
+      return workoutLogs?.map(renderLogItem);
+    }
+    return workoutLogs?.slice(0, 10).map(renderLogItem);
+  };
+
+  const renderLogItem = (log: WorkoutLog) => (
+    <div
+      key={log.id}
+      className="p-2 mb-2 flex justify-between bg-white border border-gray-200 rounded-lg "
+    >
+      <div className="flex flex-col items-start">
+        <p>{log.workoutName}</p>
+        <p>{log.duration}</p>
+      </div>
+      <p className="flex justify-center items-center">
+        {formatDistance(parseISO(log.logDate), new Date(), {
+          addSuffix: true,
+        })}
+      </p>
+    </div>
+  );
+
   return (
     <div className="py-4 ">
       <div className="flex justify-between items-center mb-2">
         <h2 className="font-bold ">Recent Workouts</h2>
-        <GrUndo onClick={removeLastItem} />
+        <div className="flex gap-4 items-center">
+          <GrUndo onClick={removeLastItem} />
+          <button
+            className="text-blue-600 active:scale-95 transition"
+            onClick={toggleExpandItems}
+          >
+            {isExpanded ? "Show Less" : "Show More"}
+          </button>
+        </div>
       </div>
 
-      {workoutLogs?.length === 0 ? (
-        <p>Flex that muscle & log a Workout </p>
-      ) : (
-        workoutLogs?.map((log) => (
-          <div
-            key={log.id}
-            className="p-2 mb-2 flex justify-between bg-white border border-gray-200 rounded-lg "
-          >
-            <div className="flex flex-col items-start">
-              <p>{log.workoutName}</p>
-              <p>{log.duration}</p>
-            </div>
-            <p className="flex justify-center items-center">
-              {formatDistance(parseISO(log.logDate), new Date(), {
-                addSuffix: true,
-              })}
-            </p>
-          </div>
-        ))
-      )}
+      {getDisplayedLogs()}
     </div>
   );
 };
