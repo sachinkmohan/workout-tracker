@@ -61,7 +61,7 @@ const LoggedWorkouts = ({
   return (
     <div className="py-4 ">
       <div className="flex justify-between items-center mb-2">
-        <h2 className="font-bold ">Recent Workouts</h2>
+        <h2 className="font-bold ">Last 10 Workouts</h2>
         <div className="flex gap-4 items-center">
           <GrUndo onClick={removeLastItem} />
           <button
